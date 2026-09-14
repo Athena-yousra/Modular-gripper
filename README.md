@@ -2,28 +2,39 @@
 
 A KUKA LBR iiwa 14 arm fitted with a custom two-finger gripper (RB9),
 simulated in MuJoCo, that uses a wrist-mounted camera + YOLO to detect a
-colored box, computes an inverse-kinematics solution to reach it, grips it
-with closed-loop force control, and runs a scripted pick-and-place
-sequence. Four processes (Simulation, Vision, Control, and an OPC UA
-server) coordinate over the OPC UA industrial protocol, so each part can
-be developed, tested, or replaced independently.
+lego piece and moves the arm through the pick-and-place motion using a
+frame-to-frame joint interpolation approach between fixed waypoints,
+gripping the object with closed-loop force control. Four processes
+(Simulation, Vision, Control, and an OPC UA server) coordinate over the
+OPC UA industrial protocol, so each part can be developed, tested, or
+replaced independently.
 
 For what each file does internally, see
 [`CODE_OVERVIEW.md`](CODE_OVERVIEW.md).
 
+## Before you start — assets you need to add yourself
+
+This repo does not include the actual 3D mesh files (they're binary CAD
+exports, not something to regenerate). Create a single, flat `assets/`
+folder in the project root and copy every mesh file into it — no
+subfolders:
 
 ```
 modular-gripper/
-├── assets/              ← arm meshes (link_0.obj ... link_7.obj, band.obj, kuka.obj)   ← the 23 gripper .stl files+lego.stl
+├── assets/              ← every mesh file, flat, no subfolders:
+│                            link_0.obj ... link_7.obj, band.obj, kuka.obj  (arm, 8 files)
+│                            01_..._1.stl ... 23_..._Hex.stl                (gripper, 23 files)
+│                            lego.stl                                       (lego piece, 1 file)
 ├── main.xml
 ├── kuka_arm.xml
 ├── ...
 ```
 
-All the mesh file paths in `main.xml` and `gripper_hardware.xml` have
-already been changed to **relative** paths   , everything resolves automatically. You don't need to edit any
-path in any file, on any machine, as long as you run the scripts 
-
+All mesh file paths in `main.xml` and `gripper_hardware.xml` are already
+**relative**  resolved against a single
+`meshdir="assets"`. So once all 32 files are sitting flat in `assets/`,
+everything resolves automatically — no path to edit, on any machine, as
+long as you run the scripts **from inside this folder**.
 
 ## Setup
 
