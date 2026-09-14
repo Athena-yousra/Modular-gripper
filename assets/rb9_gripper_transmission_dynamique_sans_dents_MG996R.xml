@@ -1,0 +1,187 @@
+<?xml version="1.0"?>
+<mujoco model="rb9_gripper_articulated_final">
+  <compiler angle="radian" meshdir="meshes" autolimits="true"/>
+  <option timestep="0.002" gravity="0 0 -9.81"/>
+  <visual>
+    <headlight diffuse="0.6 0.6 0.6" ambient="0.3 0.3 0.3" specular="0.2 0.2 0.2"/>
+    <rgba haze="0.15 0.15 0.15 1"/>
+    <global offwidth="1920" offheight="1080"/>
+  </visual>
+  <default>
+    <geom friction="1 0.005 0.0001" margin="0.001" condim="3"/>
+    <joint damping="0.05" armature="0.001" frictionloss="0.005"/>
+  </default>
+  <asset>
+    <mesh name="mesh_01" file="01_Bearing_676_10x6x3_MR106______________________1.stl"/>
+    <mesh name="mesh_02" file="02_DIN_912_M3x50_______1.stl"/>
+    <mesh name="mesh_03" file="03_GC2093_2MP_USB_Camera_Module_IMX335_5MP_USB_Camera________________3.stl"/>
+    <mesh name="mesh_04" file="04_GC2093_2MP_USB_Camera_Module_IMX335_5MP_USB_Camera__________________1.stl"/>
+    <mesh name="mesh_05" file="05_LM6UU__LM6UU_stp_1.stl"/>
+    <mesh name="mesh_06" file="06_Main_Wheel_STS3215_Servo__________________________________M31.stl"/>
+    <mesh name="mesh_07" file="07_RB9_01_060_011_Main_frame_125_follower______________________7.stl"/>
+    <mesh name="mesh_08" file="08_RB9_01_060_021_Clamp____________17.stl"/>
+    <mesh name="mesh_09" file="09_RB9_01_060_030_Gear_rack_long________________2.stl"/>
+    <mesh name="mesh_10" file="10_RB9_01_060_040_Gear_for_gripper_0_5m_26z__________________________________M32.stl"/>
+    <mesh name="mesh_11" file="11_RB9_01_060_071_Camera_holder_follower___camera_______10.stl"/>
+    <mesh name="mesh_12" file="12_Rod_d6_125__________________1.stl"/>
+    <mesh name="mesh_13" file="13_SG_ZIJI_15_STS3215_Servo__NONE.stl"/>
+    <mesh name="mesh_14" file="14_XG_ZIJI_16_STS3215_Servo__NONE.stl"/>
+    <mesh name="mesh_15" file="15_ZK_122_STS3215_Servo________________2.stl"/>
+    <mesh name="mesh_16" file="16_countersunk_flat_head_cross_recess_screw_din_DIN_EN_ISO_7046_1___M2_x_8___Z___8N.stl"/>
+    <mesh name="mesh_17" file="17_hex_nut_style_1_gradeab_din_Hexagon_Nut_ISO_4032___M2___D___N__EndChamfer.stl"/>
+    <mesh name="mesh_18" file="18_hex_nut_style_1_gradeab_din_Hexagon_Nut_ISO_4032___M3___D___N__EndChamfer.stl"/>
+    <mesh name="mesh_19" file="19_pan_head_cross_recess_screw_din_DIN_EN_ISO_7045___M3_x_4___Z___4N__RecessCore.stl"/>
+    <mesh name="mesh_20" file="20_socket_countersunk_head_screw_din_DIN_7991___M3_x_20_____20N__Hex.stl"/>
+    <mesh name="mesh_21" file="21_socket_countersunk_head_screw_din_DIN_7991___M3_x_8_____8N__Hex.stl"/>
+    <mesh name="mesh_22" file="22_socket_countersunk_head_screw_din_DIN_7991___M4_x_8_____8N__Hex.stl"/>
+    <mesh name="mesh_23" file="23_socket_head_cap_screw_din_DIN_912_M2_x_8_____8N__Hex.stl"/>
+  </asset>
+
+  <worldbody>
+    <light name="key" pos="0.3 -0.2 0.4" dir="-0.5 0.3 -0.8" directional="true" diffuse="1 1 1"/>
+    <light name="fill" pos="-0.25 0.25 0.25" dir="0.5 -0.5 -0.6" directional="true" diffuse="0.5 0.5 0.5"/>
+    <camera name="overview" pos="0.24 -0.209497353 0.213250141" quat="0.802146954 0.45838156 0.189867859 0.332260147" fovy="45"/>
+    <geom name="ground" type="plane" pos="0 0 -0.0550000398" size="0.5 0.5 0.1" rgba="0.18 0.18 0.18 1" contype="0" conaffinity="0"/>
+
+    <body name="base_link" pos="0 0 0">
+      <!-- ===== ÉLÉMENTS FIXES ===== -->
+      <geom name="fixed_04" type="mesh" mesh="mesh_16" pos="0.01025 0.0083 -0.0039" quat="0.707103485 0.00168071654 0.707106082 -0.00168071037" rgba="0.776471 0.756863 0.737255 1" contype="0" conaffinity="0"/>
+      <geom name="fixed_05" type="mesh" mesh="mesh_16" pos="0.01025 0.029 -0.0039" quat="0.707103485 0.00168071654 0.707106082 -0.00168071037" rgba="0.776471 0.756863 0.737255 1" contype="0" conaffinity="0"/>
+      <geom name="fixed_07" type="mesh" mesh="mesh_16" pos="-0.0102521 0.00830208 -0.042" quat="-0.505277395 0.494666267 0.505279251 0.49466445" rgba="0.776471 0.756863 0.737255 1" contype="0" conaffinity="0"/>
+      <geom name="fixed_26" type="mesh" mesh="mesh_16" pos="-0.0102521 0.0327521 -0.042" quat="-0.505277395 0.494666267 0.505279251 0.49466445" rgba="0.776471 0.756863 0.737255 1" contype="0" conaffinity="0"/>
+      <geom name="fixed_28" type="mesh" mesh="mesh_16" pos="0.0102479 0.00830208 -0.042" quat="-0.505277395 0.494666267 0.505279251 0.49466445" rgba="0.776471 0.756863 0.737255 1" contype="0" conaffinity="0"/>
+      <geom name="fixed_29" type="mesh" mesh="mesh_16" pos="-0.01025 0.029 -0.0039" quat="0.707103485 0.00168071654 0.707106082 -0.00168071037" rgba="0.776471 0.756863 0.737255 1" contype="0" conaffinity="0"/>
+      <geom name="fixed_32" type="mesh" mesh="mesh_16" pos="0.0102479 0.0327521 -0.042" quat="-0.505277395 0.494666267 0.505279251 0.49466445" rgba="0.776471 0.756863 0.737255 1" contype="0" conaffinity="0"/>
+      <geom name="fixed_53" type="mesh" mesh="mesh_16" pos="-0.01025 0.0083 -0.0039" quat="0.707103485 0.00168071654 0.707106082 -0.00168071037" rgba="0.776471 0.756863 0.737255 1" contype="0" conaffinity="0"/>
+
+      <geom name="fixed_14" type="mesh" mesh="mesh_22" pos="1.19605e-16 0.018 0.0038" quat="-0.199533044 0.67837166 -0.199533777 -0.678369168" rgba="0.776471 0.756863 0.737255 1" contype="0" conaffinity="0"/>
+      <geom name="fixed_55" type="mesh" mesh="mesh_22" pos="4.68917e-18 -0.018 0.0038" quat="0.678369402 0.199532981 0.678371894 -0.199532248" rgba="0.776471 0.756863 0.737255 1" contype="0" conaffinity="0"/>
+
+      <!-- Cadre principal – collisions actives -->
+      <geom name="fixed_41" type="mesh" mesh="mesh_07" pos="0 0 0" quat="1 0 0 0" rgba="1 1 1 1" contype="1" conaffinity="1"/>
+
+      <geom name="fixed_19" type="mesh" mesh="mesh_12" pos="0.0005 -0.0175 0.011" quat="0.0904077129 0.995904838 3.67717938e-21 -5.20537146e-21" rgba="0.776471 0.756863 0.737255 1" contype="0" conaffinity="0"/>
+      <geom name="fixed_38" type="mesh" mesh="mesh_12" pos="0.0005 0.0175 0.011" quat="0.995905003 0.0904058935 5.20537818e-21 -3.67716987e-21" rgba="0.776471 0.756863 0.737255 1" contype="0" conaffinity="0"/>
+
+      <!-- Autres éléments fixes -->
+      <geom name="fixed_01" type="mesh" mesh="mesh_01" pos="1.20941e-16 0.018 0.001" quat="-0.156374872 -0.156375446 0.689600287 0.689597754" rgba="0.776471 0.776471 0.815686 1" contype="0" conaffinity="0"/>
+      <geom name="fixed_02" type="mesh" mesh="mesh_17" pos="0.0169979 0.0520963 -0.0340359" quat="0.965168379 0.258616077 -0.0102478173 0.038245366" rgba="0.776471 0.756863 0.737255 1" contype="0" conaffinity="0"/>
+      <geom name="fixed_06" type="mesh" mesh="mesh_20" pos="-0.061 0.011 0.0162" quat="0.707103358 0.00173339948 0.707105955 -0.00173339311" rgba="0.776471 0.756863 0.737255 1" contype="0" conaffinity="0"/>
+      <geom name="fixed_08" type="mesh" mesh="mesh_18" pos="0.061 -0.011 -0.0024" quat="-1.3267949e-06 1 -3.87844e-18 5.14589439e-24" rgba="0.776471 0.756863 0.737255 1" contype="0" conaffinity="0"/>
+      <geom name="fixed_09" type="mesh" mesh="mesh_18" pos="-0.061 0.011 -4.33681e-19" quat="-1.3267949e-06 2.86442453e-17 -3.4179362e-17 1" rgba="0.776471 0.756863 0.737255 1" contype="0" conaffinity="0"/>
+      <geom name="fixed_11" type="mesh" mesh="mesh_23" pos="0.0169979 0.0782912 -0.0114067" quat="0.668834615 0.229476229 0.693967489 0.135683614" rgba="0.776471 0.756863 0.737255 1" contype="0" conaffinity="0"/>
+      <geom name="fixed_12" type="mesh" mesh="mesh_20" pos="0.061 0.011 0.0162" quat="0.707103358 -0.00173339948 0.707105955 0.00173339311" rgba="0.776471 0.756863 0.737255 1" contype="0" conaffinity="0"/>
+      <geom name="fixed_13" type="mesh" mesh="mesh_18" pos="-0.061 -0.011 0" quat="-1.3267949e-06 1.41872552e-17 -4.16333312e-17 1" rgba="0.776471 0.756863 0.737255 1" contype="0" conaffinity="0"/>
+      <geom name="fixed_15" type="mesh" mesh="mesh_02" pos="0.06 -0.02 -0.0045" quat="1.13580793e-06 6.8580248e-07 0.516886583 0.856053889" rgba="0.65098 0.619608 0.588235 1" contype="0" conaffinity="0"/>
+      <geom name="fixed_16" type="mesh" mesh="mesh_17" pos="-0.0170021 0.0815412 -0.0170359" quat="0.965168379 0.258616077 -0.0102478173 0.038245366" rgba="0.776471 0.756863 0.737255 1" contype="0" conaffinity="0"/>
+      <geom name="fixed_17" type="mesh" mesh="mesh_02" pos="0.06 0.02 -0.0045" quat="-6.85803987e-07 -1.13580702e-06 0.856053203 0.516887719" rgba="0.65098 0.619608 0.588235 1" contype="0" conaffinity="0"/>
+      <geom name="fixed_21" type="mesh" mesh="mesh_03" pos="-2.07734e-06 0.0653187 -0.0229378" quat="0.866024792 -0.50000106 2.14865313e-14 -2.83082676e-14" rgba="0.439216 0.47451 0.501961 1" contype="0" conaffinity="0"/>
+      <geom name="fixed_22" type="mesh" mesh="mesh_04" pos="-2.07734e-06 0.0653187 -0.0229378" quat="0.866024792 -0.50000106 2.14865313e-14 -2.83082676e-14" rgba="0.996078 0.870588 0.760784 1" contype="0" conaffinity="0"/>
+      <geom name="fixed_24" type="mesh" mesh="mesh_20" pos="-0.061 -0.011 0.0162" quat="0.707105058 0.000774841808 0.707107655 -0.000774838962" rgba="0.776471 0.756863 0.737255 1" contype="0" conaffinity="0"/>
+      <geom name="fixed_25" type="mesh" mesh="mesh_18" pos="0.061 0.011 -0.0024" quat="-1.3267949e-06 1 -2.7755562e-17 2.86442368e-17" rgba="0.776471 0.756863 0.737255 1" contype="0" conaffinity="0"/>
+      <geom name="fixed_31" type="mesh" mesh="mesh_01" pos="4.38435e-18 -0.018 0.001" quat="0.689597649 0.689600182 0.15637591 0.156375336" rgba="0.776471 0.776471 0.815686 1" contype="0" conaffinity="0"/>
+      <geom name="fixed_33" type="mesh" mesh="mesh_23" pos="-0.0170021 0.0488463 -0.0284067" quat="0.668834615 0.229476229 0.693967489 0.135683614" rgba="0.776471 0.756863 0.737255 1" contype="0" conaffinity="0"/>
+      <geom name="fixed_39" type="mesh" mesh="mesh_17" pos="-0.0170021 0.0520963 -0.0340359" quat="0.965168379 0.258616077 -0.0102478173 0.038245366" rgba="0.776471 0.756863 0.737255 1" contype="0" conaffinity="0"/>
+      <geom name="fixed_40" type="mesh" mesh="mesh_11" pos="-2.07734e-06 0.0173021 -0.042" quat="0.707105483 2.15723472e-14 0.70710808 -2.1572268e-14" rgba="1 1 1 1" contype="0" conaffinity="0"/>
+      <geom name="fixed_42" type="mesh" mesh="mesh_02" pos="-0.06 -0.02 -0.0045" quat="0.516887719 0.856053203 -2.41055033e-17 8.27129215e-17" rgba="0.65098 0.619608 0.588235 1" contype="0" conaffinity="0"/>
+      <geom name="fixed_44" type="mesh" mesh="mesh_17" pos="0.0169979 0.0815412 -0.0170359" quat="0.965168379 0.258616077 -0.0102478173 0.038245366" rgba="0.776471 0.756863 0.737255 1" contype="0" conaffinity="0"/>
+      <geom name="fixed_45" type="mesh" mesh="mesh_23" pos="-0.0170021 0.0782912 -0.0114067" quat="0.668834615 0.229476229 0.693967489 0.135683614" rgba="0.776471 0.756863 0.737255 1" contype="0" conaffinity="0"/>
+      <geom name="fixed_46" type="mesh" mesh="mesh_23" pos="0.0169979 0.0488463 -0.0284067" quat="0.668834615 0.229476229 0.693967489 0.135683614" rgba="0.776471 0.756863 0.737255 1" contype="0" conaffinity="0"/>
+      <geom name="fixed_47" type="mesh" mesh="mesh_13" pos="-1.32284e-15 0.0255 -0.0134" quat="0.499998163 0.5 0.500001837 0.5" rgba="0.501961 0.501961 0.501961 1" contype="0" conaffinity="0"/>
+      <geom name="fixed_48" type="mesh" mesh="mesh_19" pos="-2.65624e-15 5.09753e-14 -0.0014" quat="0.504237486 -0.495726262 0.504239338 0.495724441" rgba="0.776471 0.756863 0.737255 1" contype="0" conaffinity="0"/>
+      <geom name="fixed_49" type="mesh" mesh="mesh_15" pos="-3.78125e-06 0.0255038 -0.0134" quat="0.499998163 0.5 0.500001837 0.5" rgba="0.501961 0.501961 0.501961 1" contype="0" conaffinity="0"/>
+      <geom name="fixed_50" type="mesh" mesh="mesh_14" pos="-2.07734e-06 0.0255021 -0.0134" quat="0.499998163 0.5 0.500001837 0.5" rgba="0.501961 0.501961 0.501961 1" contype="0" conaffinity="0"/>
+      <geom name="fixed_51" type="mesh" mesh="mesh_06" pos="0.01 5.68639e-14 -0.0308" quat="9.38183945e-07 9.38187393e-07 0.70710808 0.707105483" rgba="0.898039 0.917647 0.929412 1" contype="0" conaffinity="0"/>
+      <geom name="fixed_54" type="mesh" mesh="mesh_02" pos="-0.06 0.02 -0.0045" quat="0.856053889 0.516886583 -8.27129535e-17 2.41053936e-17" rgba="0.65098 0.619608 0.588235 1" contype="0" conaffinity="0"/>
+      <geom name="fixed_56" type="mesh" mesh="mesh_20" pos="0.061 -0.011 0.0162" quat="0.707105058 -0.000774841808 0.707107655 0.000774838962" rgba="0.776471 0.756863 0.737255 1" contype="0" conaffinity="0"/>
+
+      <!-- ===== CORPS MOBILE DROIT ===== -->
+      <body name="right_gripper" pos="0 0 0" quat="1 0 0 0">
+        <joint name="right_slide" type="slide" axis="1 0 0" range="-0.040 0.040"/>
+        <inertial pos="0 0 0" quat="1 0 0 0" mass="0.0255" diaginertia="9.038e-6 4.326e-6 9.752e-6"/>
+
+        <geom name="right_finger" type="mesh" mesh="mesh_08" pos="0.01 -5.33698e-17 0.011" quat="-0.499998163 -0.5 0.500001837 0.5" rgba="0.501961 1 0.501961 1"/>
+        <geom name="right_rack" type="mesh" mesh="mesh_09" pos="0.019 -0.006 0.001" quat="9.38183946e-07 0.70710808 -9.38187392e-07 0.707105483" rgba="1 1 1 1" contype="0" conaffinity="0"/>
+        <geom name="right_bearing_1" type="mesh" mesh="mesh_05" pos="0.001 0.0175 0.011" quat="-0.451616927 0.544097246 0.544098046 0.451616712" rgba="0.792157 0.819608 0.933333 1" contype="0" conaffinity="0"/>
+        <geom name="right_bearing_2" type="mesh" mesh="mesh_05" pos="0.001 -0.0175 0.011" quat="-0.544096647 0.451617649 0.45161599 0.544098645" rgba="0.792157 0.819608 0.933333 1" contype="0" conaffinity="0"/>
+        <geom name="right_screw_21_1" type="mesh" mesh="mesh_21" pos="0.007 -0.009 0.00045" quat="-0.575099121 0.411412698 0.575101233 0.411411187" rgba="0.776471 0.756863 0.737255 1" contype="0" conaffinity="0"/>
+        <geom name="right_screw_21_2" type="mesh" mesh="mesh_21" pos="0.015 -0.009 0.00045" quat="-0.540557526 0.455847837 0.540559512 0.455846163" rgba="0.776471 0.756863 0.737255 1" contype="0" conaffinity="0"/>
+      </body>
+
+      <!-- ===== CORPS MOBILE GAUCHE ===== -->
+      <body name="left_gripper" pos="0 0 0" quat="1 0 0 0">
+        <joint name="left_slide" type="slide" axis="1 0 0" range="-0.040 0.040"/>
+        <inertial pos="0 0 0" quat="1 0 0 0" mass="0.0255" diaginertia="9.038e-6 4.326e-6 9.752e-6"/>
+
+        <geom name="left_finger" type="mesh" mesh="mesh_08" pos="-0.01 -5.68392e-17 0.011" quat="0.499998163 0.5 0.500001837 0.5" rgba="0.501961 1 0.501961 1"/>
+        <geom name="left_rack" type="mesh" mesh="mesh_09" pos="-0.019 0.006 0.001" quat="-0.707105483 1.84090285e-15 0.70710808 1.84089609e-15" rgba="1 1 1 1" contype="0" conaffinity="0"/>
+        <geom name="left_bearing_1" type="mesh" mesh="mesh_05" pos="-0.001 0.0175 0.011" quat="0.544096647 0.451617649 -0.45161599 0.544098645" rgba="0.792157 0.819608 0.933333 1" contype="0" conaffinity="0"/>
+        <geom name="left_bearing_2" type="mesh" mesh="mesh_05" pos="-0.001 -0.0175 0.011" quat="-0.451618371 -0.544096048 0.544099245 -0.451615268" rgba="0.792157 0.819608 0.933333 1" contype="0" conaffinity="0"/>
+        <geom name="left_screw_21_1" type="mesh" mesh="mesh_21" pos="-0.015 0.009 0.00045" quat="0.455844177 0.540561186 -0.455845852 0.540559201" rgba="0.776471 0.756863 0.737255 1" contype="0" conaffinity="0"/>
+        <geom name="left_screw_21_2" type="mesh" mesh="mesh_21" pos="-0.007 0.009 0.00045" quat="0.41141195 0.575100687 -0.411413461 0.575098575" rgba="0.776471 0.756863 0.737255 1" contype="0" conaffinity="0"/>
+      </body>
+
+      <!-- ===== PIGNON ===== -->
+      <body name="motor_pinion" pos="0 0 0" quat="1 0 0 0">
+        <!-- Degré de liberté principal : rotation du pignon/moteur. -->
+        <joint name="motor_joint" type="hinge" axis="0 0 1"
+               range="-12.566 12.566" damping="0.05" frictionloss="0.005"/>
+        <inertial pos="0 0 0" quat="1 0 0 0" mass="0.00136" diaginertia="3.357e-8 5.352e-8 3.357e-8"/>
+        <!-- Le pignon reste une représentation géométrique ; la transmission est analytique. -->
+        <geom name="pinion_visual" type="mesh" mesh="mesh_10" pos="3.79606e-20 -2.2656e-19 0.0037" quat="-0.670863881 0.670866345 0.223473003 -0.223472182" rgba="0.501961 0.501961 0.501961 1" contype="0" conaffinity="0"/>
+      </body>
+
+    </body>
+  </worldbody>
+
+  <!-- ===================================================================
+       TRANSMISSION PIGNON-CRÉMAILLÈRE (sans simulation dent par dent)
+       ===================================================================
+       On impose la relation cinématique exacte x = r*theta au niveau
+       POSITION par une contrainte d'égalité holonome (equality/joint),
+       résolue par le solveur de contraintes de MuJoCo (multiplicateurs
+       de Lagrange), et non par une force de rappel explicite (ressort).
+
+       Différence essentielle avec la tentative "fixed tendon + ressort
+       raide" : ici, la force nécessaire pour maintenir x = r*theta est
+       calculée implicitement à chaque pas à partir de la matrice de
+       masse complète du système (moteur + 2 crémaillères), et non à
+       partir d'un coefficient de raideur K fixé arbitrairement. Cela
+       évite la sur-raideur numérique (K_theta ~ 15 N.m/rad) qui
+       bridait le moteur dans la version à ressort.
+
+       Convention de signe (pignon vu de dessus, rotation +z) :
+         x_R = + r * theta   (crémaillère droite)
+         x_L = - r * theta   (crémaillère gauche)
+       -> à vérifier/inverser une fois sur la géométrie réelle si le
+          sens d'ouverture/fermeture ne correspond pas au maillage.
+
+       solref/solimp : voir "Paramètres à calibrer" dans la réponse.
+       Valeurs de départ volontairement plus rigides que les valeurs
+       MuJoCo par défaut, mais SANS commune mesure avec un ressort de
+       180000 N/m : ce sont des paramètres numériques de solveur, pas
+       une raideur physique. -->
+  <equality>
+    <joint name="eq_rack_right" joint1="right_slide" joint2="motor_joint"
+           polycoef="0 0.0065 0 0 0"
+           solref="0.002 1" solimp="0.95 0.99 0.0002"/>
+    <joint name="eq_rack_left" joint1="left_slide" joint2="motor_joint"
+           polycoef="0 -0.0065 0 0 0"
+           solref="0.002 1" solimp="0.95 0.99 0.0002"/>
+  </equality>
+
+<actuator>
+    <!-- Commande du servomoteur MG996R.
+         La position est commandée en radians et l'effort est saturé à ±0.92 N.m.
+         La charge générée par les contacts sur les crémaillères est renvoyée
+         à la transmission analytique par les contraintes d'égalité. -->
+    <position name="motor_pos_ctrl" joint="motor_joint" kp="5"
+              ctrlrange="-12.566 12.566"
+              forcelimited="true" forcerange="-0.92 0.92"/>
+  </actuator>
+
+  <keyframe>
+    <key name="nominal" qpos="0 0 0"/>
+  </keyframe>
+
+</mujoco>

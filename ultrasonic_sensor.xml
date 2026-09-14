@@ -1,0 +1,26 @@
+<mujoco model="ultrasonic_sensor_fragment">
+  <!--
+    RECONSTRUCTED FILE — this was included by main.xml (<include
+    file="ultrasonic_sensor.xml"/>) but was missing from the uploaded
+    project, so the simulation could not load without it.
+
+    Rebuilt from how sim_node.py looks the sensor up:
+        try:
+            sensor_us = data.sensor("gripper_ultrasonic")
+        except KeyError:
+            sensor_us = data.sensor("ultrasonic_sensor")
+    and from the existing <site name="ultrasonic_site" .../> already
+    defined in gripper_body.xml. A MuJoCo rangefinder sensor casts a
+    single ray along the site's local +z axis and returns the distance
+    to the first surface it hits (or -1 if nothing is in range), which
+    matches how vision_yolo_node.py and control_node.py both treat
+    negative/out-of-range values.
+
+    Please verify this matches what you originally intended (e.g. the
+    site's local +z orientation should point away from the gripper body
+    toward the workspace) before relying on it for the safety-zone logic.
+  -->
+  <sensor>
+    <rangefinder name="gripper_ultrasonic" site="ultrasonic_site"/>
+  </sensor>
+</mujoco>

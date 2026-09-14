@@ -1,0 +1,100 @@
+<mujoco model="gripper_body_fragment">
+  <body name="gripper_base" pos="0 0 0.085" childclass="gripper">
+    <!-- Grasp site (TCP) for inverse kinematics -- estimated at the fingertip
+         contact height along local +z (matches the finger force sites'
+         z=0.04). Verify/nudge pos once you can see it in the viewer. -->
+    <site name="grasp_site" type="sphere" pos="0 0 0.05" size="0.004" rgba="0 1 0 1"/>
+
+    <!-- Camera Sensor & Visual Box -->
+    <camera name="gripper_camera" pos="0 0.035 0.02" fovy="60" zaxis="0 0 -1"/>
+    <geom name="camera_visual_box" type="box" pos="0 0.035 0" size="0.008 0.008 0.008" rgba="0 0 0 1" contype="0" conaffinity="0"/>
+
+    <!-- Ultrasonic (VL53L0X) Rangefinder Mounting Site -->
+    <site name="ultrasonic_site" type="sphere" pos="0.015 0.035 0.00" size="0.005" rgba="1 1 0 0.8"/>
+
+    <!-- Fixed Elements -->
+    <geom name="fixed_04" type="mesh" mesh="mesh_16" pos="0.01025 0.0083 -0.0039" quat="0.707103 0.00168 0.707106 -0.00168" rgba="0.77 0.75 0.73 1" contype="0" conaffinity="0"/>
+    <geom name="fixed_05" type="mesh" mesh="mesh_16" pos="0.01025 0.029 -0.0039" quat="0.707103 0.00168 0.707106 -0.00168" rgba="0.77 0.75 0.73 1" contype="0" conaffinity="0"/>
+    <geom name="fixed_07" type="mesh" mesh="mesh_16" pos="-0.0102521 0.00830208 -0.042" quat="-0.505277 0.494666 0.505279 0.494664" rgba="0.77 0.75 0.73 1" contype="0" conaffinity="0"/>
+    <geom name="fixed_26" type="mesh" mesh="mesh_16" pos="-0.0102521 0.0327521 -0.042" quat="-0.505277 0.494666 0.505279 0.494664" rgba="0.77 0.75 0.73 1" contype="0" conaffinity="0"/>
+    <geom name="fixed_28" type="mesh" mesh="mesh_16" pos="0.0102479 0.00830208 -0.042" quat="-0.505277 0.494666 0.505279 0.494664" rgba="0.77 0.75 0.73 1" contype="0" conaffinity="0"/>
+    <geom name="fixed_29" type="mesh" mesh="mesh_16" pos="-0.01025 0.029 -0.0039" quat="0.707103 0.00168 0.707106 -0.00168" rgba="0.77 0.75 0.73 1" contype="0" conaffinity="0"/>
+    <geom name="fixed_32" type="mesh" mesh="mesh_16" pos="0.0102479 0.0327521 -0.042" quat="-0.505277 0.494666 0.505279 0.494664" rgba="0.77 0.75 0.73 1" contype="0" conaffinity="0"/>
+    <geom name="fixed_53" type="mesh" mesh="mesh_16" pos="-0.01025 0.0083 -0.0039" quat="0.707103 0.00168 0.707106 -0.00168" rgba="0.77 0.75 0.73 1" contype="0" conaffinity="0"/>
+    <geom name="fixed_14" type="mesh" mesh="mesh_22" pos="0 0.018 0.0038" quat="-0.199533 0.678372 -0.199534 -0.678369" rgba="0.77 0.75 0.73 1" contype="0" conaffinity="0"/>
+    <geom name="fixed_55" type="mesh" mesh="mesh_22" pos="0 -0.018 0.0038" quat="0.678369 0.199533 0.678372 -0.199532" rgba="0.77 0.75 0.73 1" contype="0" conaffinity="0"/>
+    <geom name="fixed_41" type="mesh" mesh="mesh_07" pos="0 0 0" quat="1 0 0 0" rgba="1 1 1 1" contype="1" conaffinity="1"/>
+    <geom name="fixed_19" type="mesh" mesh="mesh_12" pos="0.0005 -0.0175 0.011" quat="0.0904077 0.995905 0 0" rgba="0.77 0.75 0.73 1" contype="0" conaffinity="0"/>
+    <geom name="fixed_38" type="mesh" mesh="mesh_12" pos="0.0005 0.0175 0.011" quat="0.995905 0.0904059 0 0" rgba="0.77 0.75 0.73 1" contype="0" conaffinity="0"/>
+    <geom name="fixed_01" type="mesh" mesh="mesh_01" pos="0 0.018 0.001" quat="-0.156375 -0.156375 0.6896 0.689598" rgba="0.77 0.77 0.81 1" contype="0" conaffinity="0"/>
+    <geom name="fixed_02" type="mesh" mesh="mesh_17" pos="0.0169979 0.0520963 -0.0340359" quat="0.965168 0.258616 -0.0102478 0.0382454" rgba="0.77 0.75 0.73 1" contype="0" conaffinity="0"/>
+    <geom name="fixed_06" type="mesh" mesh="mesh_20" pos="-0.061 0.011 0.0162" quat="0.707103 0.0017334 0.707106 -0.00173339" rgba="0.77 0.75 0.73 1" contype="0" conaffinity="0"/>
+    <geom name="fixed_08" type="mesh" mesh="mesh_18" pos="0.061 -0.011 -0.0024" quat="0 1 0 0" rgba="0.77 0.75 0.73 1" contype="0" conaffinity="0"/>
+    <geom name="fixed_09" type="mesh" mesh="mesh_18" pos="-0.061 0.011 0" quat="0 0 0 1" rgba="0.77 0.75 0.73 1" contype="0" conaffinity="0"/>
+    <geom name="fixed_11" type="mesh" mesh="mesh_23" pos="0.0169979 0.0782912 -0.0114067" quat="0.668835 0.229476 0.693967 0.135684" rgba="0.77 0.75 0.73 1" contype="0" conaffinity="0"/>
+    <geom name="fixed_12" type="mesh" mesh="mesh_20" pos="0.061 0.011 0.0162" quat="0.707103 -0.0017334 0.707106 0.00173339" rgba="0.77 0.75 0.73 1" contype="0" conaffinity="0"/>
+    <geom name="fixed_13" type="mesh" mesh="mesh_18" pos="-0.061 -0.011 0" quat="0 0 0 1" rgba="0.77 0.75 0.73 1" contype="0" conaffinity="0"/>
+    <geom name="fixed_15" type="mesh" mesh="mesh_02" pos="0.06 -0.02 -0.0045" quat="0 0 0.516887 0.856054" rgba="0.65 0.61 0.58 1" contype="0" conaffinity="0"/>
+    <geom name="fixed_16" type="mesh" mesh="mesh_17" pos="-0.0170021 0.0815412 -0.0170359" quat="0.965168 0.258616 -0.0102478 0.0382454" rgba="0.77 0.75 0.73 1" contype="0" conaffinity="0"/>
+    <geom name="fixed_17" type="mesh" mesh="mesh_02" pos="0.06 0.02 -0.0045" quat="0 0 0.856053 0.516888" rgba="0.65 0.61 0.58 1" contype="0" conaffinity="0"/>
+    <geom name="fixed_21" type="mesh" mesh="mesh_03" pos="0 0.0653187 -0.0229378" quat="0.866025 -0.5 0 0" rgba="0.43 0.47 0.5 1" contype="0" conaffinity="0"/>
+    <geom name="fixed_22" type="mesh" mesh="mesh_04" pos="0 0.0653187 -0.0229378" quat="0.866025 -0.5 0 0" rgba="0.99 0.87 0.76 1" contype="0" conaffinity="0"/>
+    <geom name="fixed_24" type="mesh" mesh="mesh_20" pos="-0.061 -0.011 0.0162" quat="0.707105 0.000774842 0.707108 -0.000774839" rgba="0.77 0.75 0.73 1" contype="0" conaffinity="0"/>
+    <geom name="fixed_25" type="mesh" mesh="mesh_18" pos="0.061 0.011 -0.0024" quat="0 1 0 0" rgba="0.77 0.75 0.73 1" contype="0" conaffinity="0"/>
+    <geom name="fixed_31" type="mesh" mesh="mesh_01" pos="0 -0.018 0.001" quat="0.689598 0.6896 0.156376 0.156375" rgba="0.77 0.77 0.81 1" contype="0" conaffinity="0"/>
+    <geom name="fixed_33" type="mesh" mesh="mesh_23" pos="-0.0170021 0.0488463 -0.0284067" quat="0.668835 0.229476 0.693967 0.135684" rgba="0.77 0.75 0.73 1" contype="0" conaffinity="0"/>
+    <geom name="fixed_39" type="mesh" mesh="mesh_17" pos="-0.0170021 0.0520963 -0.0340359" quat="0.965168 0.258616 -0.0102478 0.0382454" rgba="0.77 0.75 0.73 1" contype="0" conaffinity="0"/>
+    <geom name="fixed_40" type="mesh" mesh="mesh_11" pos="0 0.0173021 -0.042" quat="0.707105 0 0.707108 0" rgba="1 1 1 1" contype="0" conaffinity="0"/>
+    <geom name="fixed_42" type="mesh" mesh="mesh_02" pos="-0.06 -0.02 -0.0045" quat="0.516888 0.856053 0 0" rgba="0.65 0.61 0.58 1" contype="0" conaffinity="0"/>
+    <geom name="fixed_44" type="mesh" mesh="mesh_17" pos="0.0169979 0.0815412 -0.0170359" quat="0.965168 0.258616 -0.0102478 0.0382454" rgba="0.77 0.75 0.73 1" contype="0" conaffinity="0"/>
+    <geom name="fixed_45" type="mesh" mesh="mesh_23" pos="-0.0170021 0.0782912 -0.0114067" quat="0.668835 0.229476 0.693967 0.135684" rgba="0.77 0.75 0.73 1" contype="0" conaffinity="0"/>
+    <geom name="fixed_46" type="mesh" mesh="mesh_23" pos="0.0169979 0.0488463 -0.0284067" quat="0.668835 0.229476 0.693967 0.135684" rgba="0.77 0.75 0.73 1" contype="0" conaffinity="0"/>
+    <geom name="fixed_47" type="mesh" mesh="mesh_13" pos="0 0.0255 -0.0134" quat="0.5 0.5 0.5 0.5" rgba="0.5 0.5 0.5 1" contype="0" conaffinity="0"/>
+    <geom name="fixed_48" type="mesh" mesh="mesh_19" pos="0 0 -0.0014" quat="0.504237 -0.495726 0.504239 0.495724" rgba="0.77 0.75 0.73 1" contype="0" conaffinity="0"/>
+    <geom name="fixed_49" type="mesh" mesh="mesh_15" pos="0 0.0255038 -0.0134" quat="0.5 0.5 0.5 0.5" rgba="0.5 0.5 0.5 1" contype="0" conaffinity="0"/>
+    <geom name="fixed_50" type="mesh" mesh="mesh_14" pos="0 0.0255021 -0.0134" quat="0.5 0.5 0.5 0.5" rgba="0.5 0.5 0.5 1" contype="0" conaffinity="0"/>
+    <geom name="fixed_51" type="mesh" mesh="mesh_06" pos="0.01 0 -0.0308" quat="0 0 0.707108 0.707105" rgba="0.89 0.91 0.92 1" contype="0" conaffinity="0"/>
+    <geom name="fixed_54" type="mesh" mesh="mesh_02" pos="-0.06 0.02 -0.0045" quat="0.856054 0.516887 0 0" rgba="0.65 0.61 0.58 1" contype="0" conaffinity="0"/>
+    <geom name="fixed_56" type="mesh" mesh="mesh_20" pos="0.061 -0.011 0.0162" quat="0.707105 -0.000774842 0.707108 0.000774839" rgba="0.77 0.75 0.73 1" contype="0" conaffinity="0"/>
+
+    <!-- Left Gripper Body -->
+    <body name="left_gripper" pos="0 0 0">
+      <joint name="left_slide" type="slide" axis="1 0 0" range="-0.040 0.040"/>
+      <inertial pos="0 0 0" quat="1 0 0 0" mass="0.0255" diaginertia="9.038e-6 4.326e-6 9.752e-6"/>
+
+      <!-- Force Sensor Site (Aligned on contact plane x=0) -->
+      <site name="left_force_site" type="box" pos="0 0 0.04" size="0.002 0.02 0.04" rgba="1 0 0 0.4"/>
+      <geom name="left_finger" type="mesh" mesh="mesh_08" pos="-0.01 0 0.011" quat="0.5 0.5 0.5 0.5" rgba="0.5 1 0.5 1" contype="0" conaffinity="0"/>
+      <geom name="left_finger_collision" type="box" pos="-0.010 0 0.04" size="0.010 0.02 0.04" contype="1" conaffinity="1" condim="3" friction="1 0.005 0.0001" rgba="1 1 1 0"/>
+      <geom name="left_rack" type="mesh" mesh="mesh_09" pos="-0.019 0.006 0.001" quat="-0.707105 0 0.707108 0" rgba="1 1 1 1" contype="0" conaffinity="0"/>
+      <geom name="left_bearing_1" type="mesh" mesh="mesh_05" pos="-0.001 0.0175 0.011" quat="0.544097 0.451618 -0.451616 0.544099" rgba="0.79 0.81 0.93 1" contype="0" conaffinity="0"/>
+      <geom name="left_bearing_2" type="mesh" mesh="mesh_05" pos="-0.001 -0.0175 0.011" quat="-0.451618 -0.544096 0.544099 -0.451615" rgba="0.79 0.81 0.93 1" contype="0" conaffinity="0"/>
+      <geom name="left_screw_21_1" type="mesh" mesh="mesh_21" pos="-0.015 0.009 0.00045" quat="0.455844 0.540561 -0.455846 0.540559" rgba="0.77 0.75 0.73 1" contype="0" conaffinity="0"/>
+      <geom name="left_screw_21_2" type="mesh" mesh="mesh_21" pos="-0.007 0.009 0.00045" quat="0.411412 0.575101 -0.411413 0.575099" rgba="0.77 0.75 0.73 1" contype="0" conaffinity="0"/>
+    </body>
+
+    <!-- Right Gripper Body -->
+    <body name="right_gripper" pos="0 0 0">
+      <joint name="right_slide" type="slide" axis="1 0 0" range="-0.040 0.040"/>
+      <inertial pos="0 0 0" quat="1 0 0 0" mass="0.0255" diaginertia="9.038e-6 4.326e-6 9.752e-6"/>
+
+      <!-- Force Sensor Site (Aligned on contact plane x=0) -->
+      <site name="right_force_site" type="box" pos="0 0 0.04" size="0.002 0.02 0.04" rgba="1 0 0 0.4"/>
+
+      <geom name="right_finger" type="mesh" mesh="mesh_08" pos="0.01 0 0.011" quat="-0.5 -0.5 0.5 0.5" rgba="0.5 1 0.5 1" contype="0" conaffinity="0"/>
+      <geom name="right_finger_collision" type="box" pos="0.010 0 0.04" size="0.010 0.02 0.04" contype="1" conaffinity="1" condim="3" friction="1 0.005 0.0001" rgba="1 1 1 0"/>
+      <geom name="right_rack" type="mesh" mesh="mesh_09" pos="0.019 -0.006 0.001" quat="0 0.707108 0 0.707105" rgba="1 1 1 1" contype="0" conaffinity="0"/>
+      <geom name="right_bearing_1" type="mesh" mesh="mesh_05" pos="0.001 0.0175 0.011" quat="-0.451617 0.544097 0.544098 0.451617" rgba="0.79 0.81 0.93 1" contype="0" conaffinity="0"/>
+      <geom name="right_bearing_2" type="mesh" mesh="mesh_05" pos="0.001 -0.0175 0.011" quat="-0.544097 0.451618 0.451616 0.544099" rgba="0.79 0.81 0.93 1" contype="0" conaffinity="0"/>
+      <geom name="right_screw_21_1" type="mesh" mesh="mesh_21" pos="0.007 -0.009 0.00045" quat="-0.575099 0.411413 0.575101 0.411411" rgba="0.77 0.75 0.73 1" contype="0" conaffinity="0"/>
+      <geom name="right_screw_21_2" type="mesh" mesh="mesh_21" pos="0.015 -0.009 0.00045" quat="-0.540558 0.455848 0.54056 0.455846" rgba="0.77 0.75 0.73 1" contype="0" conaffinity="0"/>
+    </body>
+
+    <!-- Motor Pinion Body -->
+    <body name="motor_pinion" pos="0 0 0">
+      <joint name="motor_joint" type="hinge" axis="0 0 1" range="-12.566 12.566" damping="0.05" frictionloss="0.005"/>
+      <inertial pos="0 0 0" quat="1 0 0 0" mass="0.00136" diaginertia="3.357e-8 5.352e-8 3.357e-8"/>
+      <geom name="pinion_visual" type="mesh" mesh="mesh_10" pos="0 0 0.0037" quat="-0.670864 0.670866 0.223473 -0.223472" rgba="0.5 0.5 0.5 1" contype="0" conaffinity="0"/>
+    </body>
+  </body>
+</mujoco>

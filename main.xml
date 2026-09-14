@@ -1,0 +1,66 @@
+<mujoco model="kuka_rb9_gripper_scene">
+  <compiler angle="radian" meshdir="assets" autolimits="true"/>
+
+  <asset>
+    <material name="box_red" rgba="0.8 0.1 0.1 1.0"/>
+    <material name="box_blue" rgba="0.1 0.2 0.8 1.0"/>
+  </asset>
+
+  <option timestep="0.002" gravity="0 0 -9.81" integrator="implicitfast"/>
+
+  <visual>
+    <headlight diffuse="0.6 0.6 0.6" ambient="0.3 0.3 0.3" specular="0.2 0.2 0.2"/>
+    <global azimuth="120" elevation="-20" offwidth="1920" offheight="1080"/>
+  </visual>
+
+  <!--
+    CONTROL SCHEME (IK, JericLew/PickPlaceMujoco style):
+    The arm's 7 position-servo actuators are ENABLED. sim_node.py solves
+    inverse kinematics (damped least-squares on mj_jacSite, warm-started
+    from the live arm state every physics step) for the "grasp_site" TCP
+    and writes the resulting 7 joint positions to d.ctrl. The old mocap
+    body + weld equality were REMOVED  the weld was the cause of the
+    "Nan, Inf or huge value in QACC" instability (a stiff weld constraint
+    fighting the constraint solver on a 7-DOF chain). The gripper
+    actuator stays in the default group and is driven directly by
+    sim_node.py (8.07 open / 3.65 closed).
+  -->
+
+  <!-- Arm body chain + arm actuators. -->
+  <include file="kuka_arm.xml"/>
+
+  <!-- Ultrasonic (VL53L0X) sensor definition -->
+  <include file="ultrasonic_sensor.xml"/>
+
+  <worldbody>
+    <light name="top" pos="0 0 2" mode="trackcom"/>
+    <geom name="floor" type="plane" size="2 2 0.1" rgba="0.8 0.9 0.8 1"/>
+
+    <!-- WORK TABLE -->
+    <geom name="table" type="box" pos="0.75 0.0 0.20" size="0.30 0.40 0.20" rgba="0.7 0.7 0.8 1"/>
+
+    <!-- RED BOX -->
+    <body name="box_1" pos="0.7 -0.065 0.43">
+      <freejoint name="box_1_freejoint"/>
+      <!-- size in MuJoCo is half-extents (X, Y, Z). This makes a 4x4x6 cm box -->
+      <geom type="box" size="0.02 0.02 0.03" material="box_red" mass="0.05" friction="3.0 0.05 0.0001"/>
+    </body>
+
+    <!-- BLUE BOX -->
+    <body name="box_2" pos="0.7 -0.2 0.43">
+      <freejoint name="box_2_freejoint"/>
+      <geom type="box" size="0.02 0.02 0.03" material="box_blue" mass="0.05" friction="3.0 0.05 0.0001"/>
+    </body>
+  </worldbody>
+
+  <keyframe>
+    <!-- 7 arm joints + 3 gripper joints + 2 free-jointed boxes (7 each) = 24 qpos values.
+         ctrl: 7 arm actuators + 1 gripper actuator = 8.
+         Used only as a reference/home pose; the arm is driven to Cartesian
+         targets via IK, not to this keyframe. -->
+    <key name="home"
+         qpos="0 0.785398 0 -1.5708 0 0 0  0 0 0  0.8 -0.065 0.43 1 0 0 0  0.8 -0.2 0.43 1 0 0 0"
+         ctrl="0 0.785398 0 -1.5708 0 0 0 0"/>
+  </keyframe>
+</mujoco>
+
