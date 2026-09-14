@@ -14,9 +14,7 @@ For what each file does internally, see
 
 ```
 modular-gripper/
-├── assets/              ← arm meshes (link_0.obj ... link_7.obj, band.obj, kuka.obj)
-├── gripper/
-│   └── meshes/          ← the 23 gripper .stl files
+├── assets/              ← arm meshes (link_0.obj ... link_7.obj, band.obj, kuka.obj)   ← the 23 gripper .stl files+lego.stl
 ├── main.xml
 ├── kuka_arm.xml
 ├── ...
