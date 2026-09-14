@@ -11,12 +11,6 @@ be developed, tested, or replaced independently.
 For what each file does internally, see
 [`CODE_OVERVIEW.md`](CODE_OVERVIEW.md).
 
-## Before you start — assets you need to add yourself
-
-This repo does not include the actual 3D mesh files (they're binary CAD
-exports, not something to regenerate). You need to copy two folders from
-wherever you have them locally into this project's root, so the final
-layout looks like:
 
 ```
 modular-gripper/
@@ -29,11 +23,8 @@ modular-gripper/
 ```
 
 All the mesh file paths in `main.xml` and `gripper_hardware.xml` have
-already been changed to **relative** paths (they used to be hardcoded to
-one machine, e.g. `/home/yousra/gripper/meshes/...`) — so once the
-`assets/` and `gripper/meshes/` folders are sitting alongside the other
-files, everything resolves automatically. You don't need to edit any
-path in any file, on any machine, as long as you run the scripts **from
+already been changed to **relative** paths   , everything resolves automatically. You don't need to edit any
+path in any file, on any machine, as long as you run the scripts 
 
 
 ## Setup
@@ -45,8 +36,7 @@ mkdir modular-gripper
 cd modular-gripper
 ```
 
-Put every file from this repo directly inside that folder, then add your
-`assets/` and `gripper/meshes/` folders as described above.
+Put every file from this repo directly inside that folder
 
 ### 2. Create a virtual environment and install dependencies
 
@@ -95,13 +85,7 @@ apart:
 
 To stop everything, `Ctrl+C` each terminal (stop the OPC server last).
 
-## Notes
-
-- The control sequence in `control_node.py` is currently **hardcoded**
-  (fixed joint-angle waypoints, driven by the vision node's detected
-  coordinates) — the vision pipeline runs and displays live detections,
-   the arm's trajectory  reacts to what it sees. Wiring the
-  detected box coordinates into the control sequence 
+ 
 - Safety zones (`SpeedFactor`) scale the arm's motion speed based on the
   live ultrasonic/rangefinder distance, following a simplified Speed and
   Separation Monitoring (SSM) approach.
