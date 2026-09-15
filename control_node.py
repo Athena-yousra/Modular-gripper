@@ -5,7 +5,7 @@ from asyncua import Client
 
 ZERO_POS = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 PREP_POS = [0.0, 0.147, 0.0, -0.817, 0.0, 1.28, -1.59]
-GRAB_POS = [0.0, 0.733, 0.0, -0.817, 0.0, 1.28, -1.59]
+GRAB_POS = [0.0, 0.733, 0.0, -0.837, 0.0, 1.28, -1.59]
 
 GRIPPER_OPEN = 7.29
 TARGET_FORCE = 4.5
@@ -27,7 +27,7 @@ gripper_locked_pos = GRIPPER_OPEN
 def evaluate_safety_zone(us_dist, arm_qvel):
     safe_dist = 4.0 if us_dist < 0 else us_dist
     true_vel = min(float(np.linalg.norm(arm_qvel)), 0.5)
-    d_red = BASE_CLEARANCE + (true_vel * RESPONSE_TIME)
+    d_red = BASE_CLEARANCE + (true_vel * RESPONSE_TIME)-0.03
     d_orange, d_yellow = d_red + ZONE_BUFFER, d_red + (2 * ZONE_BUFFER)
 
     if safe_dist <= d_red: return 0.0, "RED (STOP)"
