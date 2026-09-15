@@ -12,13 +12,7 @@ replaced independently.
 For what each file does internally, see
 [`CODE_OVERVIEW.md`](CODE_OVERVIEW.md).
 
-## Before you start — assets you need to add yourself
-
-This repo does not include the actual 3D mesh files (they're binary CAD
-exports, not something to regenerate). Create a single, flat `assets/`
-folder in the project root and copy every mesh file into it — no
-subfolders:
-
+## Before you start
 ```
 modular-gripper/
 ├── assets/              ← every mesh file, flat, no subfolders:
