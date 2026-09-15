@@ -1,7 +1,4 @@
 <mujoco model="kuka_arm">
-  <!-- Pulls in the gripper's <default>/<asset> declarations (technique: these
-       are top-level-mergeable sections, so they're included here as direct
-       children of <mujoco>, same as this file itself is included from main.xml). -->
   <include file="gripper_hardware.xml"/>
 
   <default>
