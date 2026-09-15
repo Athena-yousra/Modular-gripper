@@ -36,8 +36,9 @@ what the camera sees (see the note in `README.md`).
 ## Files
 
 ### `opc_server.py`
-*(Originally named `high_level_control_node.py` — renamed here since it
-actually implements the OPC UA server, not a control node.)* Registers
+logs every signal to `signal_log.csv` in the project
+folder as it runs — no extra process needed, it writes a timestamped row
+every 50 ms for as long as the server is up. 
 every shared variable under a `RobotSystem` object:
 - **Arm/gripper commands** — `ArmTargetCtrl` (7 joint targets),
   `GripperTargetCtrl`
@@ -45,7 +46,6 @@ every shared variable under a `RobotSystem` object:
 - **Telemetry** — `UltrasonicDistance`, `LeftForce`, `RightForce`,
   `AvgForce`, `SpeedFactor`
 - **Status** — `CurrentPhase`, `ControlConnected`, `CameraFrame`
-
 Must be running before any other node connects.
 
 ### `sim_node.py`
@@ -113,11 +113,18 @@ paths under `gripper/meshes/`), the rack-and-pinion equality constraints
 coupling both fingers to one motor joint, the gripper's position
 actuator, and the two finger force sensors.
 
-### `ultrasonic_sensor.xml`
-**Reconstructed** — see the comment inside the file. Defines a
+### `ultrasonic_sensor.xml`(laser)
+. Defines a
 rangefinder sensor (`gripper_ultrasonic`) on the `ultrasonic_site`
 already present in `gripper_body.xml`.
+### `camera.xml`
+. Defines the visual camera sensor (gripper_camera) mounted on the
+gripper to capture live image frames for the computer vision node.
+### `force_sensor.xml`
+.Defines the physical touch sensors (left_finger_force and right_finger_force)
+mounted on the gripper fingertips to measure grip pressure and confirm a successful grasp.
+
 
 ### `yolov8n.pt`
-Stock, COCO-pretrained YOLOv8-nano weights (not fine-tuned for the
-red/blue boxes in the scene — see the note in `README.md`).
+Trained YOLOv8 model weights specifically fine-tuned for Lego brick identification,
+enabling accurate bounding box detection for the red and blue target blocks in the scene.
