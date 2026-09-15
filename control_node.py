@@ -3,22 +3,34 @@ import time
 import numpy as np
 from asyncua import Client
 
-ZERO_POS = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
-PREP_POS = [0.0, 0.147, 0.0, -0.817, 0.0, 1.28, -1.59]
-GRAB_POS = [0.0, 0.733, 0.0, -0.837, 0.0, 1.28, -1.59]
+HOME_POS      = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]       
+PRE_PICK_POS  = [0.0, 0.147, 0.0, -0.817, 0.0, 1.28, -1.59]  
+PICK_POS      = [0.0, 0.733, 0.0, -0.837, 0.0, 1.28, -1.59]  
+
+PRE_PLACE_POS = [-1.2, 0.147, 0.0, -0.817, 0.0, 1.28, -1.59]  
+PLACE_POS     = [-1.2, 0.733, 0.0, -0.837, 0.0, 1.28, -1.59]  
 
 GRIPPER_OPEN = 7.29
 TARGET_FORCE = 4.5
 BASE_CLEARANCE, RESPONSE_TIME, ZONE_BUFFER = 0.08, 0.1, 0.06
 
+# --- TASK SEQUENCE ---
+# Each leg is (target_arm_pos, gripper_mode, nominal_duration_s). Grouped
+# and commented by task so it maps onto Pick / Displacement / Place phases.
 sequence = [
-    (PREP_POS, 'OPEN', 2.0),
-    (GRAB_POS, 'OPEN', 2.5),
-    (GRAB_POS, 'FORCE_GRIP', 2.0),
-    (PREP_POS, 'HOLD', 7.0),
-    (GRAB_POS, 'HOLD', 3.5),
-    (GRAB_POS, 'OPEN_RELEASE', 1.0),
-    (PREP_POS, 'OPEN', 1.5),
+    # --- PICK TASK ---
+    (PRE_PICK_POS, 'OPEN', 2.0),          # approach above the object
+    (PICK_POS,     'OPEN', 2.5),          # descend onto it
+    (PICK_POS,     'FORCE_GRIP', 2.0),    # close until TARGET_FORCE is reached
+    (PRE_PICK_POS, 'HOLD', 2.0),          # lift clear, holding grip
+
+    # --- DISPLACEMENT TASK (transfer while holding) ---
+    (PRE_PLACE_POS, 'HOLD', 3.0),         # travel to above the place location
+
+    # --- PLACE TASK ---
+    (PLACE_POS,     'HOLD', 2.0),         # descend to the place location
+    (PLACE_POS,     'OPEN_RELEASE', 1.0), # release the object
+    (PRE_PLACE_POS, 'OPEN', 1.5),         # retreat back up
 ]
 
 # Persistent gripper state across sequence steps
@@ -85,20 +97,20 @@ async def main():
             await robot_obj.get_child([f"{idx}:SpeedFactor"]),
             await robot_obj.get_child([f"{idx}:CurrentPhase"])
         ]
-        
+
         n_ctrl_conn = await robot_obj.get_child([f"{idx}:ControlConnected"])
         await n_ctrl_conn.set_value(True)
 
-        print("Control Node Connected. Moving to ZERO POS...")
-        await nodes[0].set_value(ZERO_POS)
+        print("Control Node Connected. Moving to HOME POS...")
+        await nodes[0].set_value(HOME_POS)
         await asyncio.sleep(1.0)
 
-        print("Moving to PREP POS and holding for 2 seconds scanning...")
-        await execute_trajectory(nodes, ZERO_POS, PREP_POS, 'OPEN', 2.0)
+        print("Moving to PRE-PICK POS and holding for 2 seconds scanning...")
+        await execute_trajectory(nodes, HOME_POS, PRE_PICK_POS, 'OPEN', 2.0)
         await asyncio.sleep(2.0)
 
-        print("Starting Pick and Place Hardcoded Sequence...")
-        current_arm = PREP_POS
+        print("Starting Pick / Displacement / Place Sequence...")
+        current_arm = PRE_PICK_POS
         for target_arm, mode, duration in sequence:
             await execute_trajectory(nodes, current_arm, target_arm, mode, duration)
             current_arm = target_arm
