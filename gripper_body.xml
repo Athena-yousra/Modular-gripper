@@ -1,18 +1,16 @@
 <mujoco model="gripper_body_fragment">
   <body name="gripper_base" pos="0 0 0.085" childclass="gripper">
-    <!-- Grasp site (TCP) for inverse kinematics -- estimated at the fingertip
-         contact height along local +z (matches the finger force sites'
-         z=0.04). Verify/nudge pos once you can see it in the viewer. -->
+    <!-- Grasp site (TCP) -->
     <site name="grasp_site" type="sphere" pos="0 0 0.05" size="0.004" rgba="0 1 0 1"/>
 
-    <!-- Camera Sensor & Visual Box -->
-    <camera name="gripper_camera" pos="0 0.035 0.02" fovy="60" zaxis="0 0 -1"/>
+    <!-- Independent Camera Included Inside Body Frame -->
+    <include file="gripper_camera.xml"/>
     <geom name="camera_visual_box" type="box" pos="0 0.035 0" size="0.008 0.008 0.008" rgba="0 0 0 1" contype="0" conaffinity="0"/>
 
-    <!-- Ultrasonic (VL53L0X) Rangefinder Mounting Site -->
-    <site name="ultrasonic_site" type="sphere" pos="0.015 0.035 0.00" size="0.005" rgba="1 1 0 0.8"/>
+    <!-- Ultrasonic Target Site -->
+    <site name="ultrasonic_site" type="sphere" pos="0.035 0.035 0.00" size="0.005" rgba="1 1 0 0.8"/>
 
-    <!-- Fixed Elements -->
+    <!-- Fixed Geoms -->
     <geom name="fixed_04" type="mesh" mesh="mesh_16" pos="0.01025 0.0083 -0.0039" quat="0.707103 0.00168 0.707106 -0.00168" rgba="0.77 0.75 0.73 1" contype="0" conaffinity="0"/>
     <geom name="fixed_05" type="mesh" mesh="mesh_16" pos="0.01025 0.029 -0.0039" quat="0.707103 0.00168 0.707106 -0.00168" rgba="0.77 0.75 0.73 1" contype="0" conaffinity="0"/>
     <geom name="fixed_07" type="mesh" mesh="mesh_16" pos="-0.0102521 0.00830208 -0.042" quat="-0.505277 0.494666 0.505279 0.494664" rgba="0.77 0.75 0.73 1" contype="0" conaffinity="0"/>
@@ -57,15 +55,16 @@
     <geom name="fixed_54" type="mesh" mesh="mesh_02" pos="-0.06 0.02 -0.0045" quat="0.856054 0.516887 0 0" rgba="0.65 0.61 0.58 1" contype="0" conaffinity="0"/>
     <geom name="fixed_56" type="mesh" mesh="mesh_20" pos="0.061 -0.011 0.0162" quat="0.707105 -0.000774842 0.707108 0.000774839" rgba="0.77 0.75 0.73 1" contype="0" conaffinity="0"/>
 
-    <!-- Left Gripper Body -->
+    <!-- Left Finger -->
     <body name="left_gripper" pos="0 0 0">
       <joint name="left_slide" type="slide" axis="1 0 0" range="-0.040 0.040"/>
       <inertial pos="0 0 0" quat="1 0 0 0" mass="0.0255" diaginertia="9.038e-6 4.326e-6 9.752e-6"/>
 
-      <!-- Force Sensor Site (Aligned on contact plane x=0) -->
-      <site name="left_force_site" type="box" pos="0 0 0.04" size="0.002 0.02 0.04" rgba="1 0 0 0.4"/>
+      <!-- Force Sensor Site -->
+      <site name="left_force_site" type="box" pos="0 0 0.06" size="0.002 0.01 0.007" rgba="1 0 0 1"/>
+
       <geom name="left_finger" type="mesh" mesh="mesh_08" pos="-0.01 0 0.011" quat="0.5 0.5 0.5 0.5" rgba="0.5 1 0.5 1" contype="0" conaffinity="0"/>
-      <geom name="left_finger_collision" type="box" pos="-0.010 0 0.04" size="0.010 0.02 0.04" contype="1" conaffinity="1" condim="3" friction="1 0.005 0.0001" rgba="1 1 1 0"/>
+      <geom name="left_finger_collision" type="box" pos="-0.010 0 0.04" size="0.010 0.02 0.04" contype="1" conaffinity="1" condim="3" friction="1 0.005 0.0001" solref="0.001 1" solimp="0.99 0.99 0.001" rgba="1 1 1 0"/>
       <geom name="left_rack" type="mesh" mesh="mesh_09" pos="-0.019 0.006 0.001" quat="-0.707105 0 0.707108 0" rgba="1 1 1 1" contype="0" conaffinity="0"/>
       <geom name="left_bearing_1" type="mesh" mesh="mesh_05" pos="-0.001 0.0175 0.011" quat="0.544097 0.451618 -0.451616 0.544099" rgba="0.79 0.81 0.93 1" contype="0" conaffinity="0"/>
       <geom name="left_bearing_2" type="mesh" mesh="mesh_05" pos="-0.001 -0.0175 0.011" quat="-0.451618 -0.544096 0.544099 -0.451615" rgba="0.79 0.81 0.93 1" contype="0" conaffinity="0"/>
@@ -73,16 +72,16 @@
       <geom name="left_screw_21_2" type="mesh" mesh="mesh_21" pos="-0.007 0.009 0.00045" quat="0.411412 0.575101 -0.411413 0.575099" rgba="0.77 0.75 0.73 1" contype="0" conaffinity="0"/>
     </body>
 
-    <!-- Right Gripper Body -->
+    <!-- Right Finger -->
     <body name="right_gripper" pos="0 0 0">
       <joint name="right_slide" type="slide" axis="1 0 0" range="-0.040 0.040"/>
       <inertial pos="0 0 0" quat="1 0 0 0" mass="0.0255" diaginertia="9.038e-6 4.326e-6 9.752e-6"/>
 
-      <!-- Force Sensor Site (Aligned on contact plane x=0) -->
-      <site name="right_force_site" type="box" pos="0 0 0.04" size="0.002 0.02 0.04" rgba="1 0 0 0.4"/>
+      <!-- Force Sensor Site -->
+      <site name="right_force_site" type="box" pos="0 0 0.06" size="0.002 0.01 0.007" rgba="1 0 0 1"/>
 
       <geom name="right_finger" type="mesh" mesh="mesh_08" pos="0.01 0 0.011" quat="-0.5 -0.5 0.5 0.5" rgba="0.5 1 0.5 1" contype="0" conaffinity="0"/>
-      <geom name="right_finger_collision" type="box" pos="0.010 0 0.04" size="0.010 0.02 0.04" contype="1" conaffinity="1" condim="3" friction="1 0.005 0.0001" rgba="1 1 1 0"/>
+      <geom name="right_finger_collision" type="box" pos="0.010 0 0.04" size="0.010 0.02 0.04" contype="1" conaffinity="1" condim="3" friction="1 0.005 0.0001" solref="0.001 1" solimp="0.99 0.99 0.001" rgba="1 1 1 0"/>
       <geom name="right_rack" type="mesh" mesh="mesh_09" pos="0.019 -0.006 0.001" quat="0 0.707108 0 0.707105" rgba="1 1 1 1" contype="0" conaffinity="0"/>
       <geom name="right_bearing_1" type="mesh" mesh="mesh_05" pos="0.001 0.0175 0.011" quat="-0.451617 0.544097 0.544098 0.451617" rgba="0.79 0.81 0.93 1" contype="0" conaffinity="0"/>
       <geom name="right_bearing_2" type="mesh" mesh="mesh_05" pos="0.001 -0.0175 0.011" quat="-0.544097 0.451618 0.451616 0.544099" rgba="0.79 0.81 0.93 1" contype="0" conaffinity="0"/>
@@ -90,7 +89,7 @@
       <geom name="right_screw_21_2" type="mesh" mesh="mesh_21" pos="0.015 -0.009 0.00045" quat="-0.540558 0.455848 0.54056 0.455846" rgba="0.77 0.75 0.73 1" contype="0" conaffinity="0"/>
     </body>
 
-    <!-- Motor Pinion Body -->
+    <!-- Motor Pinion -->
     <body name="motor_pinion" pos="0 0 0">
       <joint name="motor_joint" type="hinge" axis="0 0 1" range="-12.566 12.566" damping="0.05" frictionloss="0.005"/>
       <inertial pos="0 0 0" quat="1 0 0 0" mass="0.00136" diaginertia="3.357e-8 5.352e-8 3.357e-8"/>
