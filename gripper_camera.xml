@@ -1,0 +1,4 @@
+<mujoco model="gripper_camera">
+  <!-- Optical parameters: position relative to mounting body, vertical field of view (fovy), and view direction vector -->
+  <camera name="gripper_camera" pos="0 0.035 0.02" fovy="60" zaxis="0 0 -1"/>
+</mujoco>
