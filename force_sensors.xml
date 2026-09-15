@@ -1,0 +1,11 @@
+<mujoco model="force_sensors">
+  <sensor>
+    <!-- Contact pressure (touch) sensors: 50N max force cutoff, 0.01N noise -->
+    <touch name="left_pressure" site="left_force_site" cutoff="50.0" noise="0.01"/>
+    <touch name="right_pressure" site="right_force_site" cutoff="50.0" noise="0.01"/>
+
+    <!-- 3D load-cell force sensors: 200N max force cutoff, 0.05N noise -->
+    <force name="left_finger_force" site="left_force_site" cutoff="200.0" noise="0.05"/>
+    <force name="right_finger_force" site="right_force_site" cutoff="200.0" noise="0.05"/>
+  </sensor>
+</mujoco>
