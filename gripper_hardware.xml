@@ -7,29 +7,29 @@
   </default>
 
   <asset>
-    <mesh name="mesh_01" file="gripper/meshes/01_Bearing_676_10x6x3_MR106______________________1.stl"/>
-    <mesh name="mesh_02" file="gripper/meshes/02_DIN_912_M3x50_______1.stl"/>
-    <mesh name="mesh_03" file="gripper/meshes/03_GC2093_2MP_USB_Camera_Module_IMX335_5MP_USB_Camera________________3.stl"/>
-    <mesh name="mesh_04" file="gripper/meshes/04_GC2093_2MP_USB_Camera_Module_IMX335_5MP_USB_Camera__________________1.stl"/>
-    <mesh name="mesh_05" file="gripper/meshes/05_LM6UU__LM6UU_stp_1.stl"/>
-    <mesh name="mesh_06" file="gripper/meshes/06_Main_Wheel_STS3215_Servo__________________________________M31.stl"/>
-    <mesh name="mesh_07" file="gripper/meshes/07_RB9_01_060_011_Main_frame_125_follower______________________7.stl"/>
-    <mesh name="mesh_08" file="gripper/meshes/08_RB9_01_060_021_Clamp____________17.stl"/>
-    <mesh name="mesh_09" file="gripper/meshes/09_RB9_01_060_030_Gear_rack_long________________2.stl"/>
-    <mesh name="mesh_10" file="gripper/meshes/10_RB9_01_060_040_Gear_for_gripper_0_5m_26z__________________________________M32.stl"/>
-    <mesh name="mesh_11" file="gripper/meshes/11_RB9_01_060_071_Camera_holder_follower___camera_______10.stl"/>
-    <mesh name="mesh_12" file="gripper/meshes/12_Rod_d6_125__________________1.stl"/>
-    <mesh name="mesh_13" file="gripper/meshes/13_SG_ZIJI_15_STS3215_Servo__NONE.stl"/>
-    <mesh name="mesh_14" file="gripper/meshes/14_XG_ZIJI_16_STS3215_Servo__NONE.stl"/>
-    <mesh name="mesh_15" file="gripper/meshes/15_ZK_122_STS3215_Servo________________2.stl"/>
-    <mesh name="mesh_16" file="gripper/meshes/16_countersunk_flat_head_cross_recess_screw_din_DIN_EN_ISO_7046_1___M2_x_8___Z___8N.stl"/>
-    <mesh name="mesh_17" file="gripper/meshes/17_hex_nut_style_1_gradeab_din_Hexagon_Nut_ISO_4032___M2___D___N__EndChamfer.stl"/>
-    <mesh name="mesh_18" file="gripper/meshes/18_hex_nut_style_1_gradeab_din_Hexagon_Nut_ISO_4032___M3___D___N__EndChamfer.stl"/>
-    <mesh name="mesh_19" file="gripper/meshes/19_pan_head_cross_recess_screw_din_DIN_EN_ISO_7045___M3_x_4___Z___4N__RecessCore.stl"/>
-    <mesh name="mesh_20" file="gripper/meshes/20_socket_countersunk_head_screw_din_DIN_7991___M3_x_20_____20N__Hex.stl"/>
-    <mesh name="mesh_21" file="gripper/meshes/21_socket_countersunk_head_screw_din_DIN_7991___M3_x_8_____8N__Hex.stl"/>
-    <mesh name="mesh_22" file="gripper/meshes/22_socket_countersunk_head_screw_din_DIN_7991___M4_x_8_____8N__Hex.stl"/>
-    <mesh name="mesh_23" file="gripper/meshes/23_socket_head_cap_screw_din_DIN_912_M2_x_8_____8N__Hex.stl"/>
+    <mesh name="mesh_01" file="01_Bearing_676_10x6x3_MR106______________________1.stl"/>
+    <mesh name="mesh_02" file="02_DIN_912_M3x50_______1.stl"/>
+    <mesh name="mesh_03" file="03_GC2093_2MP_USB_Camera_Module_IMX335_5MP_USB_Camera________________3.stl"/>
+    <mesh name="mesh_04" file="04_GC2093_2MP_USB_Camera_Module_IMX335_5MP_USB_Camera__________________1.stl"/>
+    <mesh name="mesh_05" file="05_LM6UU__LM6UU_stp_1.stl"/>
+    <mesh name="mesh_06" file="06_Main_Wheel_STS3215_Servo__________________________________M31.stl"/>
+    <mesh name="mesh_07" file="07_RB9_01_060_011_Main_frame_125_follower______________________7.stl"/>
+    <mesh name="mesh_08" file="08_RB9_01_060_021_Clamp____________17.stl"/>
+    <mesh name="mesh_09" file="09_RB9_01_060_030_Gear_rack_long________________2.stl"/>
+    <mesh name="mesh_10" file="10_RB9_01_060_040_Gear_for_gripper_0_5m_26z__________________________________M32.stl"/>
+    <mesh name="mesh_11" file="11_RB9_01_060_071_Camera_holder_follower___camera_______10.stl"/>
+    <mesh name="mesh_12" file="12_Rod_d6_125__________________1.stl"/>
+    <mesh name="mesh_13" file="13_SG_ZIJI_15_STS3215_Servo__NONE.stl"/>
+    <mesh name="mesh_14" file="14_XG_ZIJI_16_STS3215_Servo__NONE.stl"/>
+    <mesh name="mesh_15" file="15_ZK_122_STS3215_Servo________________2.stl"/>
+    <mesh name="mesh_16" file="16_countersunk_flat_head_cross_recess_screw_din_DIN_EN_ISO_7046_1___M2_x_8___Z___8N.stl"/>
+    <mesh name="mesh_17" file="17_hex_nut_style_1_gradeab_din_Hexagon_Nut_ISO_4032___M2___D___N__EndChamfer.stl"/>
+    <mesh name="mesh_18" file="18_hex_nut_style_1_gradeab_din_Hexagon_Nut_ISO_4032___M3___D___N__EndChamfer.stl"/>
+    <mesh name="mesh_19" file="19_pan_head_cross_recess_screw_din_DIN_EN_ISO_7045___M3_x_4___Z___4N__RecessCore.stl"/>
+    <mesh name="mesh_20" file="20_socket_countersunk_head_screw_din_DIN_7991___M3_x_20_____20N__Hex.stl"/>
+    <mesh name="mesh_21" file="21_socket_countersunk_head_screw_din_DIN_7991___M3_x_8_____8N__Hex.stl"/>
+    <mesh name="mesh_22" file="22_socket_countersunk_head_screw_din_DIN_7991___M4_x_8_____8N__Hex.stl"/>
+    <mesh name="mesh_23" file="23_socket_head_cap_screw_din_DIN_912_M2_x_8_____8N__Hex.stl"/>
   </asset>
 
   <equality>
@@ -41,12 +41,10 @@
     <position name="motor_pos_ctrl" joint="motor_joint" kp="5" ctrlrange="-12.566 12.566" forcelimited="true" forcerange="-0.92 0.92"/>
   </actuator>
 
-  <sensor>
-    <force name="left_finger_force" site="left_force_site"/>
-    <force name="right_finger_force" site="right_force_site"/>
-  </sensor>
-
   <contact>
     <pair geom1="left_finger_collision" geom2="right_finger_collision" condim="3" margin="0.001" solref="0.002 1" solimp="0.95 0.99 0.0002"/>
   </contact>
+
+  <!-- External force sensors XML included directly into hardware configuration -->
+  <include file="force_sensors.xml"/>
 </mujoco>
