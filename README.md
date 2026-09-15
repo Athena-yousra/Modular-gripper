@@ -86,8 +86,9 @@ apart:
    python control_node.py
    ```
 5. **UI** — runs the scripted robot.ui
-python robot_ui.py
-
+ ```
+   python robot_ui.py
+   ```
 To stop everything, `Ctrl+C` each terminal (stop the OPC server last).
 
  
